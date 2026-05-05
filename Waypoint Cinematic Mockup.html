@@ -1,0 +1,180 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  .frame{background:#0a0a0a;border-radius:12px;overflow:hidden;font-family:'Inter',sans-serif;color:#f0ede6}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:0.5px solid rgba(240,237,230,0.1)}
+  .logo{font-family:'Playfair Display',serif;font-size:17px;letter-spacing:0.04em;color:#f0ede6}
+  .nav-links{display:flex;gap:24px;list-style:none}
+  .nav-links li{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,237,230,0.55);cursor:pointer}
+  .nav-links li:hover{color:#f0ede6}
+  .nav-cta{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;border:0.5px solid rgba(240,237,230,0.35);padding:7px 16px;border-radius:2px;color:#f0ede6;cursor:pointer}
+
+  .hero{position:relative;height:420px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:36px 36px 40px}
+  .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1a1410 0%,#0d1520 50%,#0a0f0a 100%)}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.85) 0%,rgba(10,10,10,0.2) 60%,transparent 100%)}
+  .hero-grid{position:absolute;inset:0;opacity:0.04;background-image:linear-gradient(rgba(240,237,230,1) 1px,transparent 1px),linear-gradient(90deg,rgba(240,237,230,1) 1px,transparent 1px);background-size:48px 48px}
+  .hero-tag{position:relative;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,237,230,0.45);margin-bottom:14px}
+  .hero-title{position:relative;font-family:'Playfair Display',serif;font-size:46px;line-height:1.08;font-weight:400;color:#f0ede6;margin-bottom:18px}
+  .hero-title em{font-style:italic;color:rgba(240,237,230,0.75)}
+  .hero-sub{position:relative;font-size:13px;font-weight:300;color:rgba(240,237,230,0.55);letter-spacing:0.03em;max-width:360px;line-height:1.6;margin-bottom:28px}
+  .hero-actions{position:relative;display:flex;gap:12px;align-items:center}
+  .btn-primary{background:#f0ede6;color:#0a0a0a;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;padding:10px 22px;border-radius:2px;cursor:pointer;font-weight:500}
+  .btn-ghost{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,237,230,0.5);cursor:pointer;display:flex;align-items:center;gap:6px}
+  .btn-ghost::after{content:'→';font-size:12px}
+  .hero-stat{position:absolute;top:28px;right:28px;text-align:right}
+  .hero-stat-num{font-family:'Playfair Display',serif;font-size:36px;color:rgba(240,237,230,0.2);line-height:1}
+  .hero-stat-label{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(240,237,230,0.2);margin-top:4px}
+
+  .section{padding:28px 28px 24px;border-bottom:0.5px solid rgba(240,237,230,0.08)}
+  .section-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,237,230,0.35);margin-bottom:18px}
+  .dest-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .dest-card{border-radius:4px;overflow:hidden;cursor:pointer;position:relative}
+  .dest-img{height:90px;display:flex;align-items:flex-end;padding:10px;position:relative}
+  .dest-img.a{background:linear-gradient(160deg,#1a2535,#0d1a2a)}
+  .dest-img.b{background:linear-gradient(160deg,#251a10,#1a0f08)}
+  .dest-img.c{background:linear-gradient(160deg,#101a14,#0a1510)}
+  .dest-dot{position:absolute;top:8px;right:8px;width:5px;height:5px;border-radius:50%;background:rgba(240,237,230,0.3)}
+  .dest-name{font-size:11px;font-weight:500;letter-spacing:0.06em;color:rgba(240,237,230,0.9);line-height:1.2}
+  .dest-country{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(240,237,230,0.4);margin-top:2px}
+
+  .chat-section{padding:22px 28px 26px;border-bottom:0.5px solid rgba(240,237,230,0.08)}
+  .chat-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .ai-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,237,230,0.35)}
+  .ai-dot{width:6px;height:6px;border-radius:50%;background:#4a7a5a;display:inline-block;margin-right:6px}
+  .msg-ai{background:rgba(240,237,230,0.05);border:0.5px solid rgba(240,237,230,0.1);border-radius:2px 10px 10px 10px;padding:11px 14px;font-size:12px;color:rgba(240,237,230,0.75);line-height:1.65;margin-bottom:10px;max-width:85%}
+  .msg-ai strong{color:#f0ede6;font-weight:500}
+  .msg-user{background:rgba(240,237,230,0.08);border-radius:10px 2px 10px 10px;padding:9px 14px;font-size:12px;color:rgba(240,237,230,0.6);line-height:1.5;margin-bottom:10px;max-width:72%;margin-left:auto;text-align:right}
+  .typing{display:flex;gap:4px;padding:8px 12px;align-items:center}
+  .typing span{width:5px;height:5px;border-radius:50%;background:rgba(240,237,230,0.3);animation:pulse 1.4s ease-in-out infinite}
+  .typing span:nth-child(2){animation-delay:0.2s}
+  .typing span:nth-child(3){animation-delay:0.4s}
+  @keyframes pulse{0%,80%,100%{opacity:0.3}40%{opacity:0.9}}
+  .chat-input{display:flex;align-items:center;gap:10px;background:rgba(240,237,230,0.06);border:0.5px solid rgba(240,237,230,0.12);border-radius:4px;padding:9px 14px;margin-top:4px}
+  .chat-input-text{flex:1;font-size:12px;color:rgba(240,237,230,0.35);letter-spacing:0.01em}
+  .chat-send{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(240,237,230,0.4)}
+
+  .map-section{padding:0;overflow:hidden;height:120px;position:relative;border-bottom:0.5px solid rgba(240,237,230,0.08)}
+  .map-bg{position:absolute;inset:0;background:#0d1520}
+  .map-grid-overlay{position:absolute;inset:0;opacity:0.06;background-image:linear-gradient(rgba(100,160,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(100,160,255,1) 1px,transparent 1px);background-size:24px 24px}
+  .map-label{position:absolute;top:16px;left:20px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(100,160,255,0.4)}
+  .map-route{position:absolute;bottom:24px;left:20px;right:20px;height:2px}
+  .map-line{width:100%;height:0.5px;background:linear-gradient(to right,rgba(100,160,255,0.15),rgba(100,160,255,0.5),rgba(100,160,255,0.2))}
+  .map-pin{position:absolute;bottom:18px;width:7px;height:7px;border-radius:50%;border:1.5px solid rgba(100,160,255,0.6)}
+  .map-pin.p1{left:12%;background:rgba(100,160,255,0.3)}
+  .map-pin.p2{left:38%;background:rgba(100,160,255,0.5)}
+  .map-pin.p3{left:67%;background:transparent}
+  .map-pin.p4{right:8%;background:transparent;opacity:0.4}
+  .map-city{position:absolute;bottom:6px;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(100,160,255,0.4)}
+  .map-city.c1{left:8%}
+  .map-city.c2{left:34%}
+  .map-city.c3{left:62%}
+
+  .footer-strip{display:flex;justify-content:space-between;align-items:center;padding:14px 28px}
+  .footer-tag{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(240,237,230,0.2)}
+  .footer-dots{display:flex;gap:6px}
+  .footer-dots span{width:4px;height:4px;border-radius:50%;background:rgba(240,237,230,0.15)}
+  .footer-dots span.active{background:rgba(240,237,230,0.5)}
+</style>
+
+<h2 class="sr-only">Waypoint AI Travel Planner – cinematic UI mockup showing hero, destination discovery, AI chat, and map sections</h2>
+
+<div class="frame">
+  <nav class="nav">
+    <div class="logo">Waypoint</div>
+    <ul class="nav-links">
+      <li>Discover</li>
+      <li>Plan</li>
+      <li>Group</li>
+    </ul>
+    <div class="nav-cta">Start planning</div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">47</div>
+      <div class="hero-stat-label">destinations live</div>
+    </div>
+    <div class="hero-tag">AI-powered trip planning</div>
+    <div class="hero-title">Where will you<br>go <em>next?</em></div>
+    <div class="hero-sub">Tell our AI what you're chasing. Golden hour in the hills, hidden coastlines, solo adventures. It builds the perfect trip around you.</div>
+    <div class="hero-actions">
+      <div class="btn-primary">Plan my trip</div>
+      <div class="btn-ghost">See destinations</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Trending destinations</div>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-img a">
+          <div class="dest-dot"></div>
+          <div>
+            <div class="dest-name">Kyoto</div>
+            <div class="dest-country">Japan</div>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-img b">
+          <div class="dest-dot"></div>
+          <div>
+            <div class="dest-name">Marrakech</div>
+            <div class="dest-country">Morocco</div>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-img c">
+          <div class="dest-dot"></div>
+          <div>
+            <div class="dest-name">Oaxaca</div>
+            <div class="dest-country">Mexico</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-section">
+    <div class="chat-header">
+      <div class="ai-label"><span class="ai-dot"></span>AI Planner</div>
+      <div style="font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,237,230,0.25)">Live</div>
+    </div>
+    <div class="msg-ai">Hey, I'm your travel planner. Tell me <strong>where you want to feel something.</strong> I'll handle the rest. Flights, hotels, activities, and a route that actually makes sense.</div>
+    <div class="msg-user">10 days in Japan, cherry blossom season, no tourist traps</div>
+    <div class="msg-ai">Perfect timing. I'm pulling <strong>live availability from Viator</strong> and cross-referencing bloom forecasts for late March. Give me a second.</div>
+    <div class="typing"><span></span><span></span><span></span></div>
+    <div class="chat-input">
+      <div class="chat-input-text">Ask anything about your trip...</div>
+      <div class="chat-send">↑</div>
+    </div>
+  </div>
+
+  <div class="map-section">
+    <div class="map-bg"></div>
+    <div class="map-grid-overlay"></div>
+    <div class="map-label">Your route</div>
+    <div class="map-route">
+      <div class="map-line"></div>
+    </div>
+    <div class="map-pin p1"></div>
+    <div class="map-pin p2"></div>
+    <div class="map-pin p3"></div>
+    <div class="map-pin p4"></div>
+    <div class="map-city c1">Tokyo</div>
+    <div class="map-city c2">Hakone</div>
+    <div class="map-city c3">Kyoto</div>
+  </div>
+
+  <div class="footer-strip">
+    <div class="footer-tag">Waypoint · AI Travel</div>
+    <div class="footer-dots">
+      <span class="active"></span><span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
